@@ -1,0 +1,4 @@
+>>> get article_sources
+"[{\"id\": 1, \"name\": \"\\u539f\\u521b\", \"articles_count\": 0},
+ {\"id\": 3, \"name\": \"\\u7ffb\\u8bd1\", \"articles_count\": 0},
+  {\"id\": 2, \"name\": \"\\u8f6c\\u8f7d\", \"articles_count\": 0}]"

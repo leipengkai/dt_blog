@@ -1,0 +1,2 @@
+2017-08-31 17:44:16,288 - main.py - /home/femn/bt_blog/main.py[line:147] - INFO - 8888
+2017-08-31 17:44:23,943 - base.py - /usr/local/lib/python2.7/dist-packages/apscheduler/schedulers/base.py[line:431] - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts

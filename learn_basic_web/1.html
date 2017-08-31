@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--它为浏览器提供一项信息（声明），即 HTML 是用什么版本编写的-->
+<html lang="en">
+<head>
+    <!--以下标签都可以添加到 head 部分：<title>、<base>、<link>、<meta>、<script> 以及 <style>。-->
+    <meta charset="UTF-8">
+    <!--使用 <meta> 元素来描述文档 元数据可用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他 web 服务-->
+
+    <!--<meta name="description" content="Free Web tutorials on HTML, CSS, XML" />-->
+    <!--meta 元素定义页面的描述-->
+
+    <!--<meta name="keywords" content="HTML, CSS, XML" />-->
+    <!--meta 元素定义页面的关键词-->
+
+    <!--<meta http-equiv="Refresh" content="5;url=http://www.w3school.com.cn" />-->
+    <!--您将在 5 秒内被重定向到新的地址-->
+    <title>Title</title>
+    <style type="text/css">
+        p.tip span {
+	font-weight:bold;
+	color:#ff9955;
+	}
+    </style>
+</head>
+<body bgcolor="white"> <!-- bgcolor="rgb(0,0,0)" "#000000" -->
+                <!--背景颜色-->
+    <h1 style="text-align:center">This is a heading</h1>
+                 <!--文本对齐-->
+    <p style="font-family:arial;color:red;font-size:20px;">A paragraph.</p>
+    <!--font-family、color 以及 font-size 属性分别定义元素中文本的   字体系列、颜色和字体尺寸：-->
+
+    <p><abbr title="World Health Organization">WHO</abbr> 成立于 1948 年。</p>
+    <!--HTML <abbr> 元素定义缩写或首字母缩略语-->
+
+    <p><cite>The Scream</cite> by Edward Munch. Painted in 1893.</p>
+    <!--HTML <cite> 元素定义著作的标题-->
+
+    <blockquote cite="http://www.worldwildlife.org/who/index.html">
+    五十年来，WWF 一直致力于保护自然界的未来。
+    WWF 工作于 100 个国家，并得到美国一百二十万会员及全球近五百万会员的支持。
+    </blockquote>
+<!--浏览器通常会对 blockquote 元素进行缩进处理-->
+
+    <a href="http://www.w3school.com.cn/" target="_blank">Visit W3School!</a>
+<!--如果把链接的 target 属性设置为 "_blank"，该链接会在新窗口中打开-->
+    <p>
+    这是邮件链接：
+    <a href="mailto:1643076443@qq.com?subject=Hello%20again">发送邮件</a>
+    </p>
+     <br />
+
+     div定义文档中的节或区域（块级）
+    <div style="color:#00FF00">
+      <h3>This is a header</h3>
+      <p>This is a paragraph.</p>
+    </div>
+    <br />
+
+    span定义文文档中的行内的小块或区域
+    HTML span 元素是行内元素，能够用作文本的容器
+    <p class="tip"><span>提示：</span>... ... ...</p>
+<button type="button" data-action="auth:facebook" title="Facebook" class="connect__button"><i class="icon-facebook-circle"></i><i class="icon-facebook-circle"></i></button>
+</body>
+</html>

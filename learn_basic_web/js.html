@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8">
+<body>
+    <p>
+    JavaScript 能够直接写入 HTML 输出流中：
+    </p>
+
+    <script>
+    document.write("<h1>This is a heading</h1>");
+    document.write("<p>This is a paragraph.</p>");
+    <!--向文档输出写内容-->
+    </script>
+<hr />
+
+
+    <p>
+    您只能在 HTML 输出流中使用 <strong>document.write</strong>。
+    如果您在文档已加载后使用它（比如在函数中），会覆盖整个文档。
+    </p>
+    <hr />
+
+    <button type="button" onclick="alert('Welcome!')">点击这里</button>
+    <!--JavaScript：对事件作出反应-->
+<hr />
+
+
+    <p id="demo">
+    JavaScript 能改变 HTML 元素的内容。
+    </p>
+
+    <script>
+    function myFunction1()
+    {
+    x=document.getElementById("demo");  // 找到元素 用于操作 HTML 元素
+    x.innerHTML="Hello JavaScript!";    // 改变内容
+    }
+    </script>
+    <button type="button" onclick="myFunction1()">点击这里</button>
+<hr />
+
+
+    <script>
+    function changeImage()
+    {
+    element=document.getElementById('myimage')
+    if (element.src.match("bulbon"))
+      {
+      element.src="/i/eg_bulboff.gif";
+      }
+    else
+      {
+      element.src="/i/eg_bulbon.gif";
+      }
+    }
+    </script>
+
+    <img id="myimage" onclick="changeImage()" src="/i/eg_bulboff.gif">
+
+    <p>点击灯泡来点亮或熄灭这盏灯</p>
+<hr />
+
+
+    <p id="demo1">
+    JavaScript 能改变 HTML 元素的样式。
+    </p>
+
+    <script>
+    function myFunction()
+    {
+    x=document.getElementById("demo1") // 找到元素
+    x.style.color="#ff0000";          // 改变样式
+    }
+    </script>
+
+    <button type="button" onclick="myFunction()">点击这里</button>
+<hr />
+
+
+    <p>js验证输入</p>
+    <p>请输入数字。如果输入值不是数字，浏览器会弹出提示框。</p>
+
+    <input id="demo2" type="text">
+
+    <script>
+    function myFunction2()
+    {
+    var x=document.getElementById("demo2").value;
+    if(x==""||isNaN(x))
+        {
+        alert("Not Numeric");
+        }
+    }
+    </script>
+    <button type="button" onclick="myFunction2()">点击这里</button>
+<hr />
+
+
+<p>本例调用的函数会执行一个计算，然后返回结果：</p>
+<p id="demo3"></p>
+<script>
+function myFunction(a,b)
+{
+return a*b;
+}
+document.getElementById("demo3").innerHTML=myFunction(4,3);
+</script>
+<hr />
+
+
+<p>点击下面的按钮来显示今天是周几：</p>
+<button onclick="myFunction4()">点击这里</button>
+<p id="demo4"></p>
+<script>
+function myFunction4()
+{
+var x;
+var d=new Date().getDay();
+switch (d)
+  {
+  case 0:
+    x="Today it's Sunday";
+    break;
+  case 1:
+    x="Today it's Monday";
+    break;
+  case 2:
+    x="Today it's Tuesday";
+    break;
+  case 3:
+    x="Today it's Wednesday";
+    break;
+  case 4:
+    x="Today it's Thursday";
+    break;
+  case 5:
+    x="Today it's Friday";
+    break;
+  case 6:
+    x="Today it's Saturday";
+    break;
+  default:
+    x="Looking forward to the Weekend";
+  }
+document.getElementById("demo4").innerHTML=x;
+}
+</script>
+<hr />
+
+
+<p>点击下面的按钮，循环遍历对象 "person" 的属性。</p>
+<button onclick="myFunction5()">点击这里</button>
+<p id="demo5"></p>
+
+<script>
+function myFunction5()
+{
+var x;
+var txt="";
+var person={fname:"Bill",lname:"Gates",age:56};
+
+for (x in person)
+{
+txt=txt + person[x];
+}
+
+document.getElementById("demo5").innerHTML=txt;
+}
+</script>
+<hr />
+
+
+<p>try{//在这里运行代码} catch(err){//在这个处理错误} </p>
+<script>
+var txt="";
+function message()
+{
+try
+  {
+  adddlert("Welcome guest!");
+  }
+catch(err)
+  {
+  txt="本页有一个错误。\n\n";
+  txt+="错误描述：" + err.message + "\n\n";
+  txt+="点击确定继续。\n\n";
+  alert(txt);
+  }
+}
+</script>
+<input type="button" value="View message" onclick="message()">
+<hr />
+
+
+<script>
+function changetext(id)
+{
+id.innerHTML="谢谢!";
+}
+</script>
+<h1 onclick="changetext(this)">请点击该文本</h1>
+<hr />
+
+
+
+</body>
+</html>
