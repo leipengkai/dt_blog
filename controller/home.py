@@ -27,6 +27,7 @@ class HomeHandler(BaseHandler):
         # logging.info(article_search_params )# 起码不是空的字典， 至少是个object 对象
         pager = yield self.async_do(ArticleService.page_articles, self.db, pager, article_search_params)
         logging.info(pager)
+        # {'totalCount': 0L, 'totalPage': 1, 'pageSize': 10, 'pageNo': 1, 'result': []}
         self.render("index.html", base_url=self.reverse_url('index'),
                     pager=pager, article_search_params=article_search_params)
 

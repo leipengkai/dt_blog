@@ -44,7 +44,7 @@ class Session(dict):
     def fetch_client(self):
         if self.get_session_id():
             data = yield self.call_client("GET", self.session_id)
-            logging.info(type(data)) # json 实际上却是str
+            logging.info(type(data)) # json 实际上却是str 难道是用yield接到的是 json也变成了str
             logging.info(json.loads(data)) # {} json类型
             # {u'messages': [{u'category': u'success', u'message': u'\u521b\u5efa\u6210\u529f!'}]}
             if data:
@@ -71,6 +71,7 @@ class Session(dict):
 
 
 class SessionManager(object):
+    # redis_session
     def __init__(self, options):
         self.connection_pool = None
         self.options = options

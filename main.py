@@ -132,9 +132,14 @@ if __name__ == '__main__':
             # $ alembic init alembic(目录)
             # 1.env.py 每次执行Alembic都会加载这个模块，主要提供项目Sqlalchemy Model 的连接,
             # 以及指定Alembic的数据库连接(也可以用alembic.ini文件去指定Alembic的数据库连接)
-            # 2. 定义pytyhon Model model/models
-            # 3.创建和编辑迁移脚本   script.py.mako 迁移脚本生成模版 4.编辑 upgrade  downgrade 方法，init数据库
+
+            # $ alembic revision -m "create account table"  #创建一个基本数据库版本
             # versions 存放生成的迁移脚本目录
+            # $ alembic upgrade head 更新好最新的版本
+
+            # 创建和编辑迁移脚本   script.py.mako 迁移脚本生成模版 4.编辑 upgrade  downgrade 方法，init数据库
+            # 对model/models的数据库进行修改之后 直接运行如下命令 即可更新数据库和此迁移脚本
+            # alembic revision --autogenerate -m "add weibo token fields for user"
             exit(0)
     # 加载命令行配置
     parse_command_line()
@@ -151,8 +156,7 @@ if __name__ == '__main__':
     # 加载redis消息监听客户端
     pubsub_manager = PubSubService(redis_pub_sub_config, application, loop)
     # SUBSCRIBE 、 UNSUBSCRIBE 和 PUBLISH 订阅/发布
-    # todo 往缓存中加载 init数据(SiteCacheService.query_all),并通过发布机构更新节点内容,至少是更新master节点内容
-    # todo 每次的请求都会更新主节点的缓存内容
+    # 每次的请求都会更新主节点的缓存内容
 
     pubsub_manager.long_listen()
     application.pubsub_manager = pubsub_manager

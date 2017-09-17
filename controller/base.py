@@ -139,6 +139,8 @@ class BaseHandler(tornado.web.RequestHandler):
             body["d"] = config['default_avatar_url']
         gravatar_url = "https://www.gravatar.com/avatar/" + hashlib.md5(email.lower()).hexdigest() + "?"
         gravatar_url += urllib.urlencode(body)
+        logging.info(body)
+        logging.info(gravatar_url)
         return gravatar_url
 
     @gen.coroutine

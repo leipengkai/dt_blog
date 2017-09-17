@@ -42,6 +42,8 @@
 	#项目依赖（如果用的不是mysql可以将MySQL-python替换使用的数据库成所对应的依赖包）
 	pip install -r requirements.txt
 ###### 创建数据库(注意使用utf-8编码)
+    CREATE DATABASE `dt_blog` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+    grant all privileges on *.* to root@localhost identified by '' with grant option;
 ###### 启动redis
 ###### 修改config.py，配置数据库、redis、日志等
 ###### 创建数据库或更新表
@@ -74,3 +76,4 @@ dt_blog是分布式的架构，相对于单进程的项目一般需要注意以�
 如果你对异步IO的web框架、分布式的架构感兴趣，或者想对dt_blog做二次开发，那么你可以阅读以下dt_blog的其他相关博文，并配合源代码学习，一定会很快掌握。
 
 1. [学习于此](https://github.com/xtg20121013/blog_xtg)
+

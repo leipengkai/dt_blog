@@ -75,10 +75,11 @@ class PubSubTornadis(object):
                     msgs = yield self.client.pubsub_pop_message()
                     # logging.info('只有在 启动时才有唯一一个的self.client')
                     # logging.info(self.client) # <tornadis.pubsub.PubSubClient object at 0x7f2649d02d50>
-                    logging.info(3) # 当localhost:8888请求时,执行3,4, 之后的任何一次请求都走  3和4 不管有没有调用pub_call
+                    logging.info(3) # 当localhost:8888请求时,执行3,4, 之后的任何一次请求都走  3和4
                     try:
-                        yield self.do_msg(msgs) # 难道有点长连接的意思
+                        yield self.do_msg(msgs)
                         logging.info(4)
+                        logging.info(msgs)
                         if isinstance(msgs, tornadis.TornadisException):
                             # closed connection by the server
                             break

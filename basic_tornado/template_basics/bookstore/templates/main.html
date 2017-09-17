@@ -1,0 +1,23 @@
+<html>	 
+<head>
+	<title>{{ escape(page_title) }}</title>
+</head>
+<body>
+	<div id="container">
+		<header>
+			{% block head %}<h1>Hello.</h1>{% end %}
+		</header>
+		<div id="main">
+			<div id="content">
+				{% block body %}{% end %}
+			</div>
+		</div>
+		<footer>
+			{% block footer %}{% end %}
+		</footer>
+	</div>
+	</body>
+</html>
+<!--这个页面定义了结构，应用了一个CSS样式表，并加载了主要的JavaScript文件。其他模板可以扩展它，在必要时替换header、body和footer块
+如果在子模板中没有 header ,则Tornado模板的默认行为，继承了来自父模板的联系信息
+-->

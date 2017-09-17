@@ -1,8 +1,11 @@
 # coding=utf-8
 
 cookie_keys = dict(
-    session_key_name="TR_SESSION_ID",
+    session_key_name="TR_SESSION_ID",# cookie_name:
+    # TR_SESSION_ID:session_id
+    # session_id(session):以json的形式 保存着session_keys的信息
     uv_key_name="uv_tag",
+    # uv_tag:datetime.date.today()
 )
 
 # session相关配置（redis实现）
@@ -40,7 +43,7 @@ site_cache_config = dict(
     max_connections=10,
 )
 
-# 关联model.site_info中的字段
+# 关联model.site_info中的字段,只缓存这些在redis 1中
 site_cache_keys = dict(
     title="title",
     signature="signature",
@@ -81,7 +84,7 @@ database_config = dict(
 
 session_keys = dict(
     login_user="login_user",
-    messages="messages",
+    messages="messages",# TR_SESSION_ID:{u'messages': [{u'category': u'success', u'message': u'\u521b\u5efa\u6210\u529f!'}],u'user':{}}
     article_draft="article_draft",
 )
 
@@ -103,9 +106,11 @@ config = dict(
     max_threads_num=500,
     database=database_config,
     redis_session=redis_session_config,
-    session_keys=session_keys,
+    session_keys=session_keys, # cookies
     master=True,  # 是否为主从节点中的master节点, 整个集群有且仅有一个,(要提高可用性的话可以用zookeeper来选主,该项目就暂时不做了)
     navbar_styles={"inverse": "魅力黑", "default": "优雅白"},  # 导航栏样式
     default_avatar_url="identicon",
+    # 刚好我的qq邮箱使用的gravatar 保存在current_user['avatar']中
+    # https://www.gravatar.com/avatar/dfe6cbdc8d08992c55350d9c26e5975a?s=40&d=identicon
     application=None,  # 项目启动后会在这里注册整个server，以便在需要的地方调用，勿修改
 )
