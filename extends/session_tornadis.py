@@ -49,6 +49,7 @@ class Session(dict):
             # {u'messages': [{u'category': u'success', u'message': u'\u521b\u5efa\u6210\u529f!'}]}
             if data:
                 self.update(json.loads(data)) # 一个字典替换别一个字典
+                # A1397576lkjhgfdsa
 
     @tornado.gen.coroutine
     def save(self, expire_time=None):

@@ -2,8 +2,8 @@
 
 cookie_keys = dict(
     session_key_name="TR_SESSION_ID",# cookie_name:
-    # TR_SESSION_ID:session_id
-    # session_id(session):以json的形式 保存着session_keys的信息
+    # TR_SESSION_ID:session_id(uuid)
+    # session_id:(session)以json的形式 保存着session_keys的信息
     uv_key_name="uv_tag",
     # uv_tag:datetime.date.today()
 )

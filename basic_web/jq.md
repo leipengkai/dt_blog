@@ -96,3 +96,37 @@ load() 方法从服务器加载数据，并把返回的数据放入被选元素�
 #### jQuery get() 和 post() 方法用于通过 HTTP GET 或 POST 请求从服务器请求数据
 GET 基本上用于从服务器获得（取回）数据。注释：GET 方法可能返回缓存数据。
 POST 也可用于从服务器获取数据(主要是发送数据)。不过，POST 方法不会缓存数据，并且常用于连同请求一起发送数据
+
+<li class="level1">
+<span class="index">11</span>
+<span class="text"><a href="#11">标准库</a></span>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
