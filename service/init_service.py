@@ -365,6 +365,7 @@ class SiteCacheService(object):
 """
 @tornado.gen.coroutine
 def flush_all_cache():
+    logging.info('22222222222222222222')
     application = config['application']
     thread_do = application.thread_executor.submit
     db = application.db_pool()

@@ -39,6 +39,7 @@ def db_poll_init():
     config['database']['engine'] = engine
     # 当使用session后就显示地调用session.close()，也不能把连接关闭，连接由QueuePool连接池管理并复用
     db_poll = sessionmaker(bind=engine) # 负责执行内存中的对象和数据库表之间的同步工作,
+    # https://segmentfault.com/a/1190000006949536
     # session = db_poll()  # 先使用工程类来创建一个session
     # ed_user = User(name='ed', fullname='Ed Jones', password='edspassword')
     # session.add(ed_user)
@@ -121,7 +122,7 @@ def parse_command_line():
 
 
 if __name__ == '__main__':
-    # http://huangx.in/18/alembic-simple-tutorial
+    #
     #Alembic 是 Sqlalchemy 的作者实现的一个数据库版本化管理工具，它可以对基于Sqlalchemy的Model与数据库之间的历史关系进行版本化的维护
     if len(sys.argv) >= 2:
         if sys.argv[1] == 'upgradedb':
@@ -129,18 +130,19 @@ if __name__ == '__main__':
             from alembic.config import main
             main("upgrade head".split(' '), 'alembic')# 更新(迁移)数据库
             # alembic会在当前目录中查找迁移(即os.getcwd()) 查到的是alembic这个目录
-            # $ alembic init alembic(目录)
-            # 1.env.py 每次执行Alembic都会加载这个模块，主要提供项目Sqlalchemy Model 的连接,
+            exit(0)
+            # $ alembic init alembic(目录) # 实例化一个alembic
+            # env.py 每次执行Alembic都会加载这个模块，主要提供项目Sqlalchemy Model 的连接,
             # 以及指定Alembic的数据库连接(也可以用alembic.ini文件去指定Alembic的数据库连接)
 
             # $ alembic revision -m "create account table"  #创建一个基本数据库版本
             # versions 存放生成的迁移脚本目录
-            # $ alembic upgrade head 更新好最新的版本
 
-            # 创建和编辑迁移脚本   script.py.mako 迁移脚本生成模版 4.编辑 upgrade  downgrade 方法，init数据库
+            # $ alembic upgrade head # 更新好最新的版本
+
+            # 创建和编辑迁移脚本   script.py.mako 迁移脚本生成模版 编辑 upgrade  downgrade 方法，init数据库
             # 对model/models的数据库进行修改之后 直接运行如下命令 即可更新数据库和此迁移脚本
             # alembic revision --autogenerate -m "add weibo token fields for user"
-            exit(0)
     # 加载命令行配置
     parse_command_line()
     # 加载日志管理
@@ -148,11 +150,15 @@ if __name__ == '__main__':
                     config['log_file'], config['log_file_path'], config['log_level'])
     # 创建application
     application = Application()
+    # 设置app 服务端口
     application.listen(config['port'])
     logging.info(config['port'])
+
     # 全局注册application
     config['application'] = application
+    # 创建IOLoop 实例
     loop = tornado.ioloop.IOLoop.current()
+
     # 加载redis消息监听客户端
     pubsub_manager = PubSubService(redis_pub_sub_config, application, loop)
     # SUBSCRIBE 、 UNSUBSCRIBE 和 PUBLISH 订阅/发布
@@ -162,6 +168,9 @@ if __name__ == '__main__':
     application.pubsub_manager = pubsub_manager
     # 为master节点注册定时任务
     if config['master']:
+        logging.info('111')
         from extends.time_task import TimeTask
         TimeTask(config['database']['engine']).add_cache_flush_task(flush_all_cache).start_tasks()
+
+    # 启动实例的LOLoop 的I/O循环,以及监听服务器开启
     loop.start()

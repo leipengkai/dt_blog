@@ -4,8 +4,8 @@ cookie_keys = dict(
     session_key_name="TR_SESSION_ID",# cookie_name:
     # TR_SESSION_ID:session_id(uuid)
     # session_id:(session)以json的形式 保存着session_keys的信息
-    uv_key_name="uv_tag",
-    # uv_tag:datetime.date.today()
+    uv_key_name="uv_tag", # cookie_name
+    # uv_tag:datetime.date.today().day
 )
 
 # session相关配置（redis实现）
@@ -18,6 +18,13 @@ redis_session_config = dict(
     session_key_name=cookie_keys['session_key_name'],
     session_expires_days=7,
 )
+
+session_keys = dict(
+    login_user="login_user",
+    messages="messages",# TR_SESSION_ID:{u'messages': [{u'category': u'success', u'message': u'\u521b\u5efa\u6210\u529f!'}],u'user':{}}
+    article_draft="article_draft",
+)
+
 
 # 基于redis的消息订阅（发布接收缓存更新消息）
 redis_pub_sub_channels = dict(
@@ -45,10 +52,10 @@ site_cache_config = dict(
 
 # 关联model.site_info中的字段,只缓存这些在redis 1中
 site_cache_keys = dict(
-    title="title",
-    signature="signature",
-    navbar="navbar",
-    menus="menus",
+    title="title", # 网站标题
+    signature="signature", # 个人签名
+    navbar="navbar", # 导航橍
+    menus="menus", # 主菜单
     article_types_not_under_menu="article_types_not_under_menu",
     plugins="plugins",
     pv="pv", # PV(访问量)：即Page View, 即页面浏览量或点击量，用户每次刷新即被计算一次
@@ -70,27 +77,21 @@ database_config = dict(
     engine_setting=dict(
         echo=False,  # print sql
         echo_pool=False,
-        # 设置7*60*60秒后回收连接池，默认-1，从不重置
+        pool_recycle=25200,# 设置7*60*60秒后回收连接池，默认-1，从不重置
         # 该参数会在每个session调用执行sql前校验当前时间与上一次连接时间间隔是否超过pool_recycle，如果超过就会重置。
         # 这里设置7小时是为了避免mysql默认会断开超过8小时未活跃过的连接，避免"MySQL server has gone away”错误
         # 如果mysql重启或断开过连接，那么依然会在第一次时报"MySQL server has gone away"，
         # 假如需要非常严格的mysql断线重连策略，可以设置心跳。
         # 心跳设置参考https://stackoverflow.com/questions/18054224/python-sqlalchemy-mysql-server-has-gone-away
-        pool_recycle=25200, #如果connection空闲了7200秒, 自动重新获取, 以防止connection被db server关闭
+        # 如果connection空闲了2小时, 自动重新获取, 以防止connection被db server关闭
         pool_size=20, # 指定的数据库池的大小
         max_overflow=20, # max_overflow时候就不能在创建连接了
     ),
 )
 
-session_keys = dict(
-    login_user="login_user",
-    messages="messages",# TR_SESSION_ID:{u'messages': [{u'category': u'success', u'message': u'\u521b\u5efa\u6210\u529f!'}],u'user':{}}
-    article_draft="article_draft",
-)
-
-
 # 站点相关配置以及tornado的相关参数
 config = dict(
+# http://localhost:63342/dt_blog/basic_web/1.html?_ijt=pdjaobmhqd6tui2jgk2ae8vb16
     debug=False,
     log_level="DEBUG",
     # log_level="WARNING",
@@ -102,11 +103,11 @@ config = dict(
     xsrf_cookies=True,
     cookie_secret="kjsdhfweiofjhewnfiwehfneiwuhniu",
     login_url="/auth/login",
-    port=8888,
+    port=8887,
     max_threads_num=500,
     database=database_config,
     redis_session=redis_session_config,
-    session_keys=session_keys, # cookies
+    session_keys=session_keys,
     master=True,  # 是否为主从节点中的master节点, 整个集群有且仅有一个,(要提高可用性的话可以用zookeeper来选主,该项目就暂时不做了)
     navbar_styles={"inverse": "魅力黑", "default": "优雅白"},  # 导航栏样式
     default_avatar_url="identicon",

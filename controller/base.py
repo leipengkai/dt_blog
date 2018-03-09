@@ -110,6 +110,7 @@ class BaseHandler(tornado.web.RequestHandler):
         self.save_session()
 
     def read_messages(self):
+        # 这就是为什么 session_redis_0 中，只保留login_user,而不保存messages的原因
         if session_keys['messages'] in self.session:
             all_messages = self.session.pop(session_keys['messages'], None)
             self.save_session()
@@ -139,8 +140,8 @@ class BaseHandler(tornado.web.RequestHandler):
             body["d"] = config['default_avatar_url']
         gravatar_url = "https://www.gravatar.com/avatar/" + hashlib.md5(email.lower()).hexdigest() + "?"
         gravatar_url += urllib.urlencode(body)
-        logging.info(body)
-        logging.info(gravatar_url)
+        # logging.info(body)
+        # logging.info(gravatar_url)
         return gravatar_url
 
     @gen.coroutine

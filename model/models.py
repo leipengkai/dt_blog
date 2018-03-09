@@ -11,11 +11,15 @@ DbBase = declarative_base()
 
 # sqlalchemy使用ForeignKey来指明一对多的关系，比如一个用户可有多个邮件地址，而一个邮件地址只属于一个用户。那么就是典型的一对多或多对一关系。
 
-# 在Address类中，我们定义外键，还有对应所属的user对象
+# 多方：在Address类中，我们定义外键，还有对应所属的user对象
+    # 在设置外键 使用的是表名和表列
     # user_id = Column(Integer, ForeignKey('users.id'))
-    # user = relationship("User", back_populates="addresses")
-# 而在User类中，我们定义addresses属性
-    # addresses = relationship("Address", order_by=Address.id, back_populates="user")
+
+    # 在设置关联属性的时候 使用的是类名和属性名
+    # user = relationship("User", backref="addresses") # foreign_keys='User.id'
+
+# 一方：User类中，我们定义addresses属性
+    # addresses = relationship("Address", order_by=Address.id, backref="user")
 
 
 
@@ -80,6 +84,7 @@ class ArticleType(DbBase):
     menu_id = Column(Integer, ForeignKey('menus.id'), default=None)
     setting_id = Column(Integer, ForeignKey('articleTypeSettings.id'))
 
+
     @property
     def is_protected(self):
         if self.setting:
@@ -143,8 +148,7 @@ class Article(DbBase):
     num_of_view = Column(Integer, default=0)
     articleType_id = Column(Integer, ForeignKey('articleTypes.id'))
     source_id = Column(Integer, ForeignKey('sources.id'))
-    comments = relationship('Comment', backref='article', lazy='dynamic')
-    # 多对一
+    comments = relationship('Comment', backref='article', lazy='dynamic') # foreign_keys='Comment.id'
 
     def fetch_comments_count(self, count=None):
         self.comments_count = count if count is not None else self.comments.count()

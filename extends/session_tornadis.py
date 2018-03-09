@@ -7,7 +7,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-
+# 保存用户信息以及message(只是message在页面展示过后 又被删除了)
 class Session(dict):
     def __init__(self, request_handler):
         # logging.info(self) # {}
@@ -20,7 +20,6 @@ class Session(dict):
         # logging.info(self) # {}
         # logging.info(self.request_handler) # <controller.home.HomeHandler object at 0x7f6154aae0d0>
         # 通过 add_message() 向Session中加信息
-        # todo 错误 self是request_handler 也就session 同时也是dice类型
 
     @tornado.gen.coroutine
     def init_fetch(self):
@@ -46,16 +45,18 @@ class Session(dict):
             data = yield self.call_client("GET", self.session_id)
             logging.info(type(data)) # json 实际上却是str 难道是用yield接到的是 json也变成了str
             logging.info(json.loads(data)) # {} json类型
-            # {u'messages': [{u'category': u'success', u'message': u'\u521b\u5efa\u6210\u529f!'}]}
+            # {u'login_user': {u'name': u'femn', u'email': u'1643076443@qq.com',
+            #                  u'avatar': u'https://www.gravatar.com/avatar/dfe6cbdc8d08992c55350d9c26e5975a?s=40&d=identicon',
+            #                  u'id': 1},
+            #  u'messages': [{u'category': u'success',u'message': u'\u767b\u9646\u6210\u529f\uff01\u6b22\u8fce\u56de\u6765\uff0cfemn!'}]}
             if data:
                 self.update(json.loads(data)) # 一个字典替换别一个字典
-                # A1397576lkjhgfdsa
 
     @tornado.gen.coroutine
     def save(self, expire_time=None):
         session_id = self.generate_session_id()
         data_json = json.dumps(self)
-        # 也就是说 session_id保存的就是json格式的add_message()的内容
+        # 也就是说 session_id保存的就是json格式的add_message(),userinfo的内容
         yield self.call_client("SET", session_id, data_json)
         if expire_time:
             yield self.call_client("EXPIRE", session_id, expire_time)

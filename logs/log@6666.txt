@@ -1,0 +1,90 @@
+2018-01-09 08:35:39,983 - main.py - main.py[line:152] - INFO - 6666
+2018-01-09 08:35:40,481 - base.py - /usr/local/lib/python2.7/dist-packages/apscheduler/schedulers/base.py[line:431] - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2018-01-09 08:36:00,154 - main.py - main.py[line:152] - INFO - 6666
+2018-01-09 08:36:00,320 - base.py - /usr/local/lib/python2.7/dist-packages/apscheduler/schedulers/base.py[line:431] - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2018-01-09 08:36:00,476 - base.py - /usr/local/lib/python2.7/dist-packages/apscheduler/schedulers/base.py[line:865] - INFO - Added job "flush_all_cache" to job store "default"
+2018-01-09 08:36:00,476 - base.py - /usr/local/lib/python2.7/dist-packages/apscheduler/schedulers/base.py[line:158] - INFO - Scheduler started
+2018-01-09 08:36:00,477 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:136] - DEBUG - connecting to 127.0.0.1:6379...
+2018-01-09 08:36:00,477 - base.py - /usr/local/lib/python2.7/dist-packages/apscheduler/schedulers/base.py[line:924] - DEBUG - Looking for jobs to run
+2018-01-09 08:36:00,479 - base.py - /usr/local/lib/python2.7/dist-packages/apscheduler/schedulers/base.py[line:1004] - DEBUG - Next wakeup is due at 2018-01-10 00:00:00+08:00 (in 55439.522445 seconds)
+2018-01-09 08:36:00,479 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:221] - DEBUG - connected to 127.0.0.1:6379
+2018-01-09 08:36:00,479 - pub_sub_tornadis.py - /home/femn/dt_blog/extends/pub_sub_tornadis.py[line:66] - INFO - 1
+2018-01-09 08:36:00,480 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 52 bytes written to the socket
+2018-01-09 08:36:00,480 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 56 bytes read from socket
+2018-01-09 08:36:00,480 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:136] - DEBUG - connecting to 127.0.0.1:6379...
+2018-01-09 08:36:00,481 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:221] - DEBUG - connected to 127.0.0.1:6379
+2018-01-09 08:36:00,481 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 23 bytes written to the socket
+2018-01-09 08:36:00,481 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 5 bytes read from socket
+2018-01-09 08:36:00,481 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 24 bytes written to the socket
+2018-01-09 08:36:00,481 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 10 bytes read from socket
+2018-01-09 08:36:00,482 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 28 bytes written to the socket
+2018-01-09 08:36:00,482 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 52 bytes read from socket
+2018-01-09 08:36:00,482 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 25 bytes written to the socket
+2018-01-09 08:36:00,482 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 13 bytes read from socket
+2018-01-09 08:36:00,482 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 24 bytes written to the socket
+2018-01-09 08:36:00,482 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 8 bytes read from socket
+2018-01-09 08:36:00,483 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 48 bytes written to the socket
+2018-01-09 08:36:00,483 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 8 bytes read from socket
+2018-01-09 08:36:00,483 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 26 bytes written to the socket
+2018-01-09 08:36:00,483 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 151 bytes read from socket
+2018-01-09 08:36:00,484 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 21 bytes written to the socket
+2018-01-09 08:36:00,484 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 8 bytes read from socket
+2018-01-09 08:36:00,484 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 21 bytes written to the socket
+2018-01-09 08:36:00,484 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 7 bytes read from socket
+2018-01-09 08:36:00,485 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 33 bytes written to the socket
+2018-01-09 08:36:00,485 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 7 bytes read from socket
+2018-01-09 08:36:00,485 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 33 bytes written to the socket
+2018-01-09 08:36:00,485 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 7 bytes read from socket
+2018-01-09 08:36:00,485 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 35 bytes written to the socket
+2018-01-09 08:36:00,485 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 176 bytes read from socket
+2018-01-09 08:36:00,486 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 43 bytes written to the socket
+2018-01-09 08:36:00,486 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 7 bytes read from socket
+2018-01-09 08:36:00,486 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 43 bytes written to the socket
+2018-01-09 08:36:00,486 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 7 bytes read from socket
+2018-01-09 08:36:00,487 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 43 bytes written to the socket
+2018-01-09 08:36:00,487 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 7 bytes read from socket
+2018-01-09 08:36:00,487 - pub_sub_tornadis.py - /home/femn/dt_blog/extends/pub_sub_tornadis.py[line:73] - INFO - 2
+2018-01-09 08:39:20,290 - main.py - main.py[line:152] - INFO - 6666
+2018-01-09 08:39:20,457 - base.py - /usr/local/lib/python2.7/dist-packages/apscheduler/schedulers/base.py[line:431] - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2018-01-09 08:39:20,519 - base.py - /usr/local/lib/python2.7/dist-packages/apscheduler/schedulers/base.py[line:865] - INFO - Added job "flush_all_cache" to job store "default"
+2018-01-09 08:39:20,519 - base.py - /usr/local/lib/python2.7/dist-packages/apscheduler/schedulers/base.py[line:158] - INFO - Scheduler started
+2018-01-09 08:39:20,519 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:136] - DEBUG - connecting to 127.0.0.1:6379...
+2018-01-09 08:39:20,519 - base.py - /usr/local/lib/python2.7/dist-packages/apscheduler/schedulers/base.py[line:924] - DEBUG - Looking for jobs to run
+2018-01-09 08:39:20,521 - base.py - /usr/local/lib/python2.7/dist-packages/apscheduler/schedulers/base.py[line:1004] - DEBUG - Next wakeup is due at 2018-01-10 00:00:00+08:00 (in 55239.479925 seconds)
+2018-01-09 08:39:20,521 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:221] - DEBUG - connected to 127.0.0.1:6379
+2018-01-09 08:39:20,522 - pub_sub_tornadis.py - /home/femn/dt_blog/extends/pub_sub_tornadis.py[line:66] - INFO - 1
+2018-01-09 08:39:20,522 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 52 bytes written to the socket
+2018-01-09 08:39:20,522 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 56 bytes read from socket
+2018-01-09 08:39:20,523 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:136] - DEBUG - connecting to 127.0.0.1:6379...
+2018-01-09 08:39:20,523 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:221] - DEBUG - connected to 127.0.0.1:6379
+2018-01-09 08:39:20,523 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 23 bytes written to the socket
+2018-01-09 08:39:20,523 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 5 bytes read from socket
+2018-01-09 08:39:20,523 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 24 bytes written to the socket
+2018-01-09 08:39:20,524 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 10 bytes read from socket
+2018-01-09 08:39:20,524 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 28 bytes written to the socket
+2018-01-09 08:39:20,524 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 52 bytes read from socket
+2018-01-09 08:39:20,524 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 25 bytes written to the socket
+2018-01-09 08:39:20,524 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 13 bytes read from socket
+2018-01-09 08:39:20,525 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 24 bytes written to the socket
+2018-01-09 08:39:20,525 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 8 bytes read from socket
+2018-01-09 08:39:20,525 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 48 bytes written to the socket
+2018-01-09 08:39:20,525 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 8 bytes read from socket
+2018-01-09 08:39:20,526 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 26 bytes written to the socket
+2018-01-09 08:39:20,526 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 151 bytes read from socket
+2018-01-09 08:39:20,526 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 21 bytes written to the socket
+2018-01-09 08:39:20,526 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 8 bytes read from socket
+2018-01-09 08:39:20,526 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 21 bytes written to the socket
+2018-01-09 08:39:20,527 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 7 bytes read from socket
+2018-01-09 08:39:20,527 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 33 bytes written to the socket
+2018-01-09 08:39:20,527 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 7 bytes read from socket
+2018-01-09 08:39:20,527 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 33 bytes written to the socket
+2018-01-09 08:39:20,527 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 7 bytes read from socket
+2018-01-09 08:39:20,528 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 35 bytes written to the socket
+2018-01-09 08:39:20,528 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 176 bytes read from socket
+2018-01-09 08:39:20,528 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 43 bytes written to the socket
+2018-01-09 08:39:20,528 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 7 bytes read from socket
+2018-01-09 08:39:20,529 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 43 bytes written to the socket
+2018-01-09 08:39:20,529 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 7 bytes read from socket
+2018-01-09 08:39:20,529 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:257] - DEBUG - 43 bytes written to the socket
+2018-01-09 08:39:20,529 - connection.py - /usr/local/lib/python2.7/dist-packages/tornadis/connection.py[line:269] - DEBUG - 7 bytes read from socket
+2018-01-09 08:39:20,529 - pub_sub_tornadis.py - /home/femn/dt_blog/extends/pub_sub_tornadis.py[line:73] - INFO - 2

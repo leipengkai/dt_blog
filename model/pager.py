@@ -13,6 +13,11 @@ class Pager(Dict):
         self.totalCount = 0
         self.result = []
 
+    def set_total_count(self, count):
+        self.totalCount = count
+        if count > 0:
+            self.totalPage = (count+self.pageSize-1) / self.pageSize
+
     def build_query(self, query):
         limit = self.pageSize
         if self.pageNo < 0:
@@ -21,11 +26,6 @@ class Pager(Dict):
         # offset 从哪页开始
         query = query.limit(limit).offset(offset)
         return query
-
-    def set_total_count(self, count):
-        self.totalCount = count
-        if count > 0:
-            self.totalPage = (count+self.pageSize-1) / self.pageSize
 
     def set_result(self, result):
         if result:

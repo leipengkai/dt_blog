@@ -192,6 +192,9 @@ HTML属性总是以名称/值对的形式出现，比如：name="value",属性�
     id     id               规定 元素的唯一 id
     style style_definition  规定元素的行内样式(inline style）
     title   text            规定元素的额外信息（可在工具提示示中显示）
+    其它经常元素(标签)：
+    src  :js,img
+    href
 
 ### HTML输出
 对于 HTML，您无法通过在 HTML 代码中添加额外的空格或换行来改变输出的效果。

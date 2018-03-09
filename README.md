@@ -77,3 +77,8 @@ dt_blog是分布式的架构，相对于单进程的项目一般需要注意以�
 
 1. [学习于此](https://github.com/xtg20121013/blog_xtg)
 
+####### 一些基本教程
+[tornado介绍](http://tornado.moelove.info/zh/latest/guide/intro.html)
+[sqlalchemy数据库](http://docs.sqlalchemy.org/en/rel_1_0/orm/tutorial.html)
+[Alembic介绍](http://huangx.in/18/alembic-simple-tutorial)
+[redis订阅/发布](https://www.jianshu.com/p/d0911a195968)

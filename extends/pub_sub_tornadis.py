@@ -6,9 +6,15 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-
+# 根据发布/订阅 去更新站点内容
 class PubSubTornadis(object):
 
+    # 通过设置IOLoop端口时,增加的回调函数,此回调函数的作用是
+    # 1. 在host=localhost的redis这个数据库中 对频道的订阅
+    # 2. 第一次根据mysql去初始化redis数据库并更新站点内容,之后则仅仅是读取redis数据库
+    # 3. 等待发布端 发布信息
+    # 每个请求都会发布一条信息,没有请求则阻塞着 默认是发送add_pv_uv()中的'blog_view_count_updated'内容
+    # 4. 按发布信息的内容 去更新站点的内容
     def __init__(self, redis_pub_sub_config, loop=None):
         self.redis_pub_sub_config = redis_pub_sub_config
         if not loop:
@@ -23,10 +29,8 @@ class PubSubTornadis(object):
     # 发送者（发送信息的客户端）不是将信息直接发送给特定的接收者（接收信息的客户端）， 而是将信息发送给频道（channel）
     # 然后由频道将信息转发给所有对这个频道感兴趣的订阅者。
 
-    #比如说， 要订阅频道 foo 和 bar ， 客户端可以使用频道名字作为参数来调用 SUBSCRIBE 命令：
-    # redis> SUBSCRIBE foo bar
-    # 当有客户端发送信息到这些频道时， Redis 会将传入的信息推送到所有订阅这些频道的客户端里面
 
+    # 发布端
     def get_pub_client(self):
         if not self.pub_client:
             self.pub_client = tornadis.Client(host=self.redis_pub_sub_config['host'],
@@ -48,6 +52,7 @@ class PubSubTornadis(object):
             yield pub_client.call("PUBLISH", channel, msg)
 
 
+    # 订阅端
     # 当有客户端发送信息到这些频道时
     def get_client(self):
         client = tornadis.PubSubClient(host=self.redis_pub_sub_config['host'], port=self.redis_pub_sub_config['port'],
@@ -69,17 +74,17 @@ class PubSubTornadis(object):
             subscribed = yield self.client.pubsub_subscribe(*channels)
             if subscribed:
                 self.connect_times = 0
-                yield self.first_do_after_subscribed()
+                yield self.first_do_after_subscribed()# 初始化redis:1的数据库  有True则更新站点信息
                 logging.info(2) # 启动main走 1,2 ，并且到2就停止了
                 while True:
+                    # 每个请求都会发布一条信息,没有请求则阻塞着 默认是发送add_pv_uv()中的'blog_view_count_updated'内容
                     msgs = yield self.client.pubsub_pop_message()
                     # logging.info('只有在 启动时才有唯一一个的self.client')
                     # logging.info(self.client) # <tornadis.pubsub.PubSubClient object at 0x7f2649d02d50>
                     logging.info(3) # 当localhost:8888请求时,执行3,4, 之后的任何一次请求都走  3和4
                     try:
                         yield self.do_msg(msgs)
-                        logging.info(4)
-                        logging.info(msgs)
+                        # logging.info(4)
                         if isinstance(msgs, tornadis.TornadisException):
                             # closed connection by the server
                             break
