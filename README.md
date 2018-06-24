@@ -15,7 +15,7 @@
 1. 改用tornado框架，是个基于异步IO的web server。
 2. 分布式架构，可以多进程多主机启动server实例，再通过nginx等代理服务器做负载均衡，实现横向扩展提高并发性能。
 3. 提高多数主要页面访问性能。对频繁查询的组件（例如博客标题、菜单、公告、访问统计）进行缓存，
-    优化sql查询（多条sql语句合并一次执行、仅查需要的字段，例如搜索博文列表不查博文的具体内容）以提高首页博文等主要页面访问性能。
+    优化sql查询（多条sql语句合并一次执行、仅查需要的字段，例如搜索博文列表不查博文的具体内容）以提高首页博文等主要页面访问性能
 4. 访问统计改为日pv和日uv。
 5. 博文编辑器改为markdown编辑器。
 6. 引入alembic管理数据库版本。
@@ -43,7 +43,7 @@
 	pip install -r requirements.txt
 ###### 创建数据库(注意使用utf-8编码)
     CREATE DATABASE `dt_blog` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-    grant all privileges on *.* to root@localhost identified by '' with grant option;
+    grant all privileges on dt_blog.* to root@localhost identified by '' with grant option;
 ###### 启动redis
 ###### 修改config.py，配置数据库、redis、日志等
 ###### 创建数据库或更新表

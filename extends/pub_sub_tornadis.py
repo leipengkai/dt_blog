@@ -9,12 +9,6 @@ logger = logging.getLogger(__name__)
 # 根据发布/订阅 去更新站点内容
 class PubSubTornadis(object):
 
-    # 通过设置IOLoop端口时,增加的回调函数,此回调函数的作用是
-    # 1. 在host=localhost的redis这个数据库中 对频道的订阅
-    # 2. 第一次根据mysql去初始化redis数据库并更新站点内容,之后则仅仅是读取redis数据库
-    # 3. 等待发布端 发布信息
-    # 每个请求都会发布一条信息,没有请求则阻塞着 默认是发送add_pv_uv()中的'blog_view_count_updated'内容
-    # 4. 按发布信息的内容 去更新站点的内容
     def __init__(self, redis_pub_sub_config, loop=None):
         self.redis_pub_sub_config = redis_pub_sub_config
         if not loop:
@@ -40,8 +34,6 @@ class PubSubTornadis(object):
         return self.pub_client
 
     @tornado.gen.coroutine
-    # todo 指定更新内容 客户端发送内容 先不管有没有关注 交给do_msg() 的update_by_sub_msg()去判断该做
-    # 向所有 节点发布信息  收到之后 将通过do_msg() 方法去更新redis的site_cache
     def pub_call(self, msg, *channels):
         pub_client = self.get_pub_client()
         if not pub_client.is_connected():
@@ -52,8 +44,7 @@ class PubSubTornadis(object):
             yield pub_client.call("PUBLISH", channel, msg)
 
 
-    # 订阅端
-    # 当有客户端发送信息到这些频道时
+    # 订阅接收端
     def get_client(self):
         client = tornadis.PubSubClient(host=self.redis_pub_sub_config['host'], port=self.redis_pub_sub_config['port'],
                                        password=self.redis_pub_sub_config['password'],
@@ -74,13 +65,13 @@ class PubSubTornadis(object):
             subscribed = yield self.client.pubsub_subscribe(*channels)
             if subscribed:
                 self.connect_times = 0
-                yield self.first_do_after_subscribed()# 初始化redis:1的数据库  有True则更新站点信息
+                # 更新站点缓存信息
+                yield self.first_do_after_subscribed()
                 logging.info(2) # 启动main走 1,2 ，并且到2就停止了
                 while True:
-                    # 每个请求都会发布一条信息,没有请求则阻塞着 默认是发送add_pv_uv()中的'blog_view_count_updated'内容
+                    # 每个请求都会发布一条信息,没有请求则阻塞着(实则只要调用了pub_call就会接收到信息)
+                    # 默认是发送add_pv_uv()中的'blog_view_count_updated'内容
                     msgs = yield self.client.pubsub_pop_message()
-                    # logging.info('只有在 启动时才有唯一一个的self.client')
-                    # logging.info(self.client) # <tornadis.pubsub.PubSubClient object at 0x7f2649d02d50>
                     logging.info(3) # 当localhost:8888请求时,执行3,4, 之后的任何一次请求都走  3和4
                     try:
                         yield self.do_msg(msgs)
@@ -98,6 +89,13 @@ class PubSubTornadis(object):
             yield tornado.gen.sleep(wait_time)
             self.long_listen()
             self.connect_times += 1
+
+    # 通过设置IOLoop端口时,增加的回调函数,此回调函数的作用是
+    # 1. 在host=localhost的redis这个数据库中 对频道的订阅
+    # 2. 第一次根据mysql去初始化redis数据库并更新站点内容,之后则仅仅是读取redis数据库
+    # 3. 等待发布端 发布信息
+    # 每个请求都会发布一条信息,没有请求则阻塞着 默认是发送add_pv_uv()中的'blog_view_count_updated'内容
+    # 4. 按发布信息的内容 去更新站点的内容
 
     # override
     @tornado.gen.coroutine

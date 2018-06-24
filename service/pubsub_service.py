@@ -13,7 +13,7 @@ class PubSubService(PubSubTornadis):
     def __init__(self, redis_pub_sub_config, application, loop=None):
         super(PubSubService, self).__init__(redis_pub_sub_config, loop)
         self.application = application
-        self.db_pool = self.application.db_pool
+        # self.db_pool = self.application.db_pool
         self.cache_manager = self.application.cache_manager
         self.thread_executor = self.application.thread_executor
         self.thread_do = self.thread_executor.submit

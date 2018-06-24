@@ -1,4 +1,5 @@
 # coding: utf-8
+import logging
 from datetime import datetime
 from model.constants import Constants
 from sqlalchemy.orm import contains_eager, deferred
@@ -11,16 +12,21 @@ DbBase = declarative_base()
 
 # sqlalchemy使用ForeignKey来指明一对多的关系，比如一个用户可有多个邮件地址，而一个邮件地址只属于一个用户。那么就是典型的一对多或多对一关系。
 
-# 多方：在Address类中，我们定义外键，还有对应所属的user对象
+# 多方(子类)：在Address类中，我们定义外键，还有对应所属的user对象
     # 在设置外键 使用的是表名和表列
     # user_id = Column(Integer, ForeignKey('users.id'))
+    # 在子表类中通过 foreign key (外键)引用父表的参考字段
 
-    # 在设置关联属性的时候 使用的是类名和属性名
-    # user = relationship("User", backref="addresses") # foreign_keys='User.id'
+    # 在设置关联属性的时候 使用的是类名和属性名 和父类中的backref="user"一样的意思
+    # user = relationship("User", backref="addresses")
+    # 子表将会在多对一的关系中获得父表的属性
 
-# 一方：User类中，我们定义addresses属性
+# 一方(父类)：User类中，我们定义addresses属性 OTM
     # addresses = relationship("Address", order_by=Address.id, backref="user")
+    # 在父表类中通过 relationship() 方法来引用子表的类集合
 
+    # 只需要在一对多关系基础上的父表中使用 uselist 参数来表示 OTO
+    # addresses = relationship("Address", uselist=False, order_by=Address.id, backref="user")
 
 
 class DbInit(object):
@@ -51,8 +57,9 @@ class Menu(DbBase):
         query = self.types
         if only_show_not_hide:
             query = query.join(ArticleType.setting). \
-                filter(ArticleTypeSetting.hide.isnot(True)). \
-                options(contains_eager(ArticleType.setting))
+                filter(ArticleTypeSetting.hide.isnot(True))
+            # \
+            #     options(contains_eager(ArticleType.setting))
         self.all_types = query.all()
 
     def __repr__(self):
