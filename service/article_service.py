@@ -60,6 +60,7 @@ class ArticleService(object):
         if pager.result:
             if search_params.show_comments_count:
                 result = []
+                r = pager.result
                 for article, comments_count in pager.result:
                     logging.info(article) # <Article u'1'>
                     logging.info(type(article)) # <class 'model.models.Article'>
